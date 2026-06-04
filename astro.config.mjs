@@ -15,53 +15,55 @@ export default defineConfig({
                 }
             ],
             sidebar: [
-                // FIXED: Flattened into a single, direct, unnested link object
-                { label: 'System Roadmap', link: '/00-roadmap' },
                 {
-                    label: '01. AI Fundamentals',
+                    label: 'Getting Started',
+                    items: [{ autogenerate: { directory: '00-getting-started' } }]
+                },
+                {
+                    label: 'AI Fundamentals',
                     items: [{ autogenerate: { directory: '01-ai-fundamentals' } }]
                 },
                 {
-                    label: '02. LLM Engineering',
+                    label: 'LLM Engineering',
                     items: [{ autogenerate: { directory: '02-llm-engineering' } }]
                 },
                 {
-                    label: '03. Embeddings & Search',
+                    label: 'Embeddings & Search',
                     items: [{ autogenerate: { directory: '03-embeddings' } }]
                 },
                 {
-                    label: '04. Production RAG',
+                    label: 'Production RAG',
                     items: [{ autogenerate: { directory: '04-rag' } }]
                 },
                 {
-                    label: '05. Autonomous Agents',
+                    label: 'Autonomous Agents',
                     items: [{ autogenerate: { directory: '05-ai-agents' } }]
                 },
                 {
-                    label: '06. AI System Design',
+                    label: 'AI System Design',
                     items: [{ autogenerate: { directory: '06-ai-system-design' } }]
                 },
                 {
-                    label: '07. Evaluation Systems',
+                    label: 'Evaluation Systems',
                     items: [{ autogenerate: { directory: '07-evaluation' } }]
                 },
                 {
-                    label: '08. AI Security & Red Teaming',
+                    label: 'AI Security & Red Teaming',
                     items: [{ autogenerate: { directory: '08-ai-security' } }]
                 },
                 {
-                    label: '09. Production Projects',
+                    label: 'Production Projects',
                     items: [{ autogenerate: { directory: '09-projects' } }]
                 },
                 {
-                    label: '10. Architectural Case Studies',
+                    label: 'Architectural Case Studies',
                     items: [{ autogenerate: { directory: '10-case-studies' } }]
                 },
                 {
-                    label: '11. Interview Preparation',
+                    label: 'Interview Preparation',
                     items: [{ autogenerate: { directory: '11-interview-prep' } }]
                 },
             ],
-        }),
-    ],
-});
+        }), // <-- Closed starlight integration
+    ], // <-- Closed integrations array
+}); // <-- Closed defineConfig
