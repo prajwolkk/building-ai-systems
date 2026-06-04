@@ -1,49 +1,243 @@
-# Starlight Starter Kit: Basics
+# Building AI Systems
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+**A production-grade curriculum and implementation lab for designing, shipping, evaluating, and securing real AI systems.**
 
+[Live Documentation](https://buildingaisystems.prajwolkharel.com.np) | [Repository](https://github.com/prajwolkk/building-ai-systems)
+
+Building AI Systems is both a structured engineering documentation portal and an executable source catalog. The Astro Starlight site explains the architecture, tradeoffs, and operational model behind production AI systems. The root-level `examples/` tree mirrors the documentation with clean Python implementations that can be inspected, tested, and extended.
+
+## System Summary
+
+This repository is built for engineers who want to move beyond prompt snippets and into system design. It covers foundations, LLM application architecture, retrieval, agents, evaluation, security, production projects, and architectural case studies with a strict documentation matrix:
+
+- `index.md`: conceptual overview.
+- `02-architecture.md`: system topology and component boundaries.
+- `03-deep-dive.md`: implementation mechanics and production tradeoffs.
+
+## Directory Map
+
+```text
+building-ai-systems/
+├── src/content/docs/                 # Astro Starlight documentation portal
+│   ├── index.mdx                     # Root documentation homepage
+│   ├── 00-getting-started/           # Introduction and roadmap
+│   ├── 01-ai-fundamentals/           # Foundations of AI systems
+│   ├── 02-llm-engineering/           # Prompting, tools, context, memory
+│   ├── 03-embeddings/                # Vector representations and search
+│   ├── 04-rag/                       # Retrieval-augmented generation
+│   ├── 05-ai-agents/                 # Agent loops, planning, memory, tools
+│   ├── 06-ai-system-design/          # Routing, orchestration, tracing, cache
+│   ├── 07-evaluation/                # Offline evals, online evals, tracing
+│   ├── 08-ai-security/               # Prompt injection, leakage, red teaming
+│   ├── 09-projects/                  # Production reference builds
+│   ├── 10-case-studies/              # Real-world architecture studies
+│   └── 11-interview-prep/            # Interview-focused system design prep
+├── examples/                         # Executable Python source examples
+│   └── 01-ai-fundamentals/
+│       └── 01-what-is-ai/
+│           └── compute_benchmark.py
+├── astro.config.mjs                  # Generated manual-label sidebar config
+├── package.json                      # Astro/Starlight build tooling
+└── README.md                         # Project catalog
 ```
-npm create astro@latest -- --template starlight
+
+## Curriculum Tree
+
+<details open>
+<summary><strong>00. Getting Started</strong></summary>
+
+- Introduction
+- System Roadmap
+
+</details>
+
+<details>
+<summary><strong>01. AI Fundamentals</strong></summary>
+
+- What Is AI
+- Machine Learning
+- Deep Learning
+- Neural Networks
+- Transformers
+- Tokens
+- Context Windows
+- Inference
+- Training vs Inference
+- Model Parameters
+
+</details>
+
+<details>
+<summary><strong>02. LLM Engineering</strong></summary>
+
+- System Prompts
+- Prompt Engineering
+- Structured Output
+- Function Calling
+- Tool Calling
+- Context Engineering
+- Conversation Memory
+- Guardrails
+- Model Selection
+- Cost Optimization
+
+</details>
+
+<details>
+<summary><strong>03. Embeddings & Search</strong></summary>
+
+- What Are Embeddings
+- Vector Space
+- Similarity Search
+- Semantic Search
+- ANN Search
+- Vector Indexes
+- pgvector
+- Pinecone
+- Qdrant
+- Weaviate
+
+</details>
+
+<details>
+<summary><strong>04. Production RAG</strong></summary>
+
+- RAG Fundamentals
+- Document Loading
+- Chunking
+- Retrieval
+- Hybrid Search
+- Reranking
+- Context Building
+- Citations
+- Evaluation
+- Production RAG
+
+</details>
+
+<details>
+<summary><strong>05. Autonomous Agents</strong></summary>
+
+- Agent Basics
+- Agent Loop
+- Planning
+- Tool Use
+- Agent Memory
+- Reflection
+- Multi-Agent Systems
+- Human In The Loop
+- Workflows vs Agents
+- Production Agents
+
+</details>
+
+<details>
+<summary><strong>06. AI System Design</strong></summary>
+
+- Stateless vs Stateful Routing
+- Multi-Model Orchestration
+- Speculative Editing Engines
+- Multi-Tenant Context Isolation
+- Distributed RAG Pipelines
+- Asynchronous Agent Clusters
+- Dynamic LLM Routing
+- Distributed Tracing Observability
+- Gateway Layer Security
+- Caching and Edge Inference
+
+</details>
+
+<details>
+<summary><strong>07. Evaluation Systems</strong></summary>
+
+- Why Evaluation Matters
+- Hallucinations
+- Groundedness
+- Faithfulness
+- Benchmarking
+- Offline Eval
+- Online Eval
+- A/B Testing
+- Tracing
+- Production Evals
+
+</details>
+
+<details>
+<summary><strong>08. AI Security & Red Teaming</strong></summary>
+
+- Prompt Injection
+- Jailbreaks
+- Data Leakage
+- RAG Poisoning
+- Agent Risks
+- Secrets Management
+- API Security
+- Model Abuse
+- Red Teaming
+- Secure AI Design
+
+</details>
+
+<details>
+<summary><strong>09. Production Projects</strong></summary>
+
+- Project 01: Chatbot
+- Project 02: RAG Chat
+- Project 03: Document Chat
+- Project 04: Support Agent
+- Project 05: Research Agent
+- Project 06: AI Workflow
+- Project 07: Coding Assistant
+- Project 08: AI Search Engine
+
+</details>
+
+<details>
+<summary><strong>10. Architectural Case Studies</strong></summary>
+
+- OpenAI Chat Session State
+- Anthropic System Prompt Scaling
+- vLLM Speculative Decoding
+- Perplexity Knowledge Fusion
+- GitHub Copilot Context Assembly
+- DeepSeek Mixture Of Experts
+- Meta Llama Alignment Tuning
+- Langfuse Production Tracing
+
+</details>
+
+<details>
+<summary><strong>11. Interview Preparation</strong></summary>
+
+- Agents Interview
+- AI Engineer Questions
+- Embeddings Interview
+- RAG Interview
+- System Design Interview
+
+</details>
+
+## Local Development
+
+```bash
+npm install
+npm run dev
+npm run build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The production portal is deployed at:
 
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```text
+https://buildingaisystems.prajwolkharel.com.np
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## Implementation Track
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+Run the first mirrored source example:
 
-Static assets, like favicons, can be placed in the `public/` directory.
+```bash
+python3 examples/01-ai-fundamentals/01-what-is-ai/compute_benchmark.py --size 16 --iterations 2 --backend python
+```
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+Each new implementation should mirror the documentation module and topic path so readers can move cleanly between design explanation and executable source.
