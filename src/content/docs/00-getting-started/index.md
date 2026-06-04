@@ -8,7 +8,7 @@ sidebar:
 
 Building AI Systems is an engineering-first curriculum for designing, implementing, evaluating, and operating production AI software. It treats models as one part of a larger system that includes data contracts, orchestration layers, retrieval paths, safety controls, observability, deployment strategy, and cost governance.
 
-The repository is intentionally dual-purpose. The documentation portal provides the architecture map and deep technical explanations, while the root-level examples directory mirrors the curriculum with production-grade Python implementations. The goal is to make every concept navigable as both a design note and executable source.
+The repository is intentionally structured as a tutorial-first documentation system. The source tree already contains the complete curriculum matrix, but the public sidebar only reveals topics once they contain meaningful writing. That keeps the live web app clean while preserving a stable writing path inside the repo.
 
 ## Engineering Standard
 
@@ -22,9 +22,15 @@ The project is organized around the discipline required to ship AI workloads und
 
 ## Repository Model
 
-Each module is a structured section of the system. Every topic contains an overview, a system architecture page, and a technical deep dive. This forced structure keeps the portal navigable as the curriculum grows and makes every topic visible as a collapsible sidebar group.
+Each module is a structured section of the system. Every topic contains three numbered pages:
 
-The examples directory follows the same naming scheme as the documentation. When a page introduces a concrete implementation pattern, the corresponding Python source lives outside the docs tree so it can be imported, tested, and reused like normal application code.
+- `01-overview.md`: the conceptual boundary, vocabulary, and engineering purpose.
+- `02-architecture.md`: the topology, interfaces, constraints, and failure surfaces.
+- `03-deep-dive.md`: the implementation mechanics, tradeoffs, and production details.
+
+This structure keeps the repository predictable as the curriculum grows. A topic appears in the live sidebar only after at least one of its pages has real tutorial content.
+
+The docs sync step runs before local development and production builds. It keeps scaffold-only pages as drafts, removes draft guards from filled pages, and lets the sidebar, search index, sitemap, and generated routes stay aligned with the content that is actually ready to read.
 
 ## Operating Principle
 

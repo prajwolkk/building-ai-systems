@@ -58,9 +58,29 @@ Benchmark the full path that the user experiences. A model-only benchmark can hi
 
 The right benchmark reports throughput, median latency, tail latency, memory use, and quality-sensitive configuration values such as precision, sequence length, and batch size.
 
-## Source Reference
+## Minimal Compute Trace
 
-[View Production Source Code](../../../../../examples/01-ai-fundamentals/01-what-is-ai/compute_benchmark.py)
+A useful way to reason about AI compute is to trace one request through the runtime:
+
+1. Text is normalized and tokenized into integer identifiers.
+2. Token identifiers are mapped into embedding vectors.
+3. Layers repeatedly transform vectors through matrix multiplication, attention, activation, and normalization.
+4. The model produces logits, which are unnormalized scores over possible next tokens.
+5. A decoding policy selects the next token, appends it to the sequence, and repeats the loop until completion.
+
+This loop explains why small product choices can have large infrastructure effects. A longer system prompt increases prefill cost. A larger response budget increases decode cost. More retrieved context increases attention and memory pressure. Higher concurrency forces the serving layer to choose between throughput, latency, and queueing behavior.
+
+## Operational Questions
+
+Before shipping an AI feature, the compute path should answer concrete engineering questions:
+
+- What is the maximum context length accepted by the system?
+- Which model family, precision, and serving backend are used?
+- Which work runs on CPU, GPU, or an external provider?
+- What is cached between requests?
+- What is streamed to the user and what is held until validation completes?
+- What latency and cost budget does each request class receive?
+- Which benchmark represents the actual production path?
 
 ## Systems Takeaway
 

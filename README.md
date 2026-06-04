@@ -1,44 +1,53 @@
 # Building AI Systems
 
-**A production-grade curriculum and implementation lab for designing, shipping, evaluating, and securing real AI systems.**
+**A production-grade AI systems curriculum built as a clean Astro Starlight documentation portal.**
 
 [Live Documentation](https://buildingaisystems.prajwolkharel.com.np) | [Repository](https://github.com/prajwolkk/building-ai-systems)
 
-Building AI Systems is both a structured engineering documentation portal and an executable source catalog. The Astro Starlight site explains the architecture, tradeoffs, and operational model behind production AI systems. The root-level `examples/` tree mirrors the documentation with clean Python implementations that can be inspected, tested, and extended.
+Building AI Systems is a structured engineering guide for learning how real AI products are designed, evaluated, secured, and operated. The repository is organized as a long-form tutorial system: every topic has the same internal page shape, and the public sidebar only reveals sections once meaningful content has been written.
 
 ## System Summary
 
-This repository is built for engineers who want to move beyond prompt snippets and into system design. It covers foundations, LLM application architecture, retrieval, agents, evaluation, security, production projects, and architectural case studies with a strict documentation matrix:
+This project is for engineers who want to move beyond prompt snippets and into production architecture. It covers model foundations, LLM application design, embeddings, RAG, agents, evaluation, security, project architecture, case studies, and interview-grade system design.
 
-- `index.md`: conceptual overview.
-- `02-architecture.md`: system topology and component boundaries.
-- `03-deep-dive.md`: implementation mechanics and production tradeoffs.
+Every curriculum topic follows the same numbered matrix:
 
-## Directory Map
+- `01-overview.md`: concept boundary, vocabulary, and engineering purpose.
+- `02-architecture.md`: topology, components, interfaces, and failure surfaces.
+- `03-deep-dive.md`: mechanics, tradeoffs, constraints, and production details.
+
+The docs matrix exists on disk from the start, but the Astro sidebar is fill-gated. Placeholder-only modules stay hidden in the live web app until their pages contain real tutorial content.
+
+The `sync:docs` script runs automatically before `npm run dev` and `npm run build`. It marks scaffold-only pages as production drafts and removes draft guards from pages once their body contains real content.
+
+## Repository Map
 
 ```text
 building-ai-systems/
-├── src/content/docs/                 # Astro Starlight documentation portal
-│   ├── index.mdx                     # Root documentation homepage
-│   ├── 00-getting-started/           # Introduction and roadmap
-│   ├── 01-ai-fundamentals/           # Foundations of AI systems
-│   ├── 02-llm-engineering/           # Prompting, tools, context, memory
-│   ├── 03-embeddings/                # Vector representations and search
-│   ├── 04-rag/                       # Retrieval-augmented generation
-│   ├── 05-ai-agents/                 # Agent loops, planning, memory, tools
-│   ├── 06-ai-system-design/          # Routing, orchestration, tracing, cache
-│   ├── 07-evaluation/                # Offline evals, online evals, tracing
-│   ├── 08-ai-security/               # Prompt injection, leakage, red teaming
-│   ├── 09-projects/                  # Production reference builds
-│   ├── 10-case-studies/              # Real-world architecture studies
-│   └── 11-interview-prep/            # Interview-focused system design prep
-├── examples/                         # Executable Python source examples
-│   └── 01-ai-fundamentals/
-│       └── 01-what-is-ai/
-│           └── compute_benchmark.py
-├── astro.config.mjs                  # Generated manual-label sidebar config
-├── package.json                      # Astro/Starlight build tooling
-└── README.md                         # Project catalog
+├── src/content/docs/
+│   ├── index.mdx                     # Documentation homepage
+│   ├── 404.md                        # Custom documentation 404 page
+│   ├── 00-getting-started/
+│   │   ├── index.md                  # Introduction
+│   │   └── roadmap.md                # Curriculum topology
+│   ├── 01-ai-fundamentals/
+│   │   └── 01-what-is-ai/
+│   │       ├── 01-overview.md
+│   │       ├── 02-architecture.md
+│   │       └── 03-deep-dive.md
+│   ├── 02-llm-engineering/
+│   ├── 03-embeddings/
+│   ├── 04-rag/
+│   ├── 05-ai-agents/
+│   ├── 06-ai-system-design/
+│   ├── 07-evaluation/
+│   ├── 08-ai-security/
+│   ├── 09-projects/
+│   ├── 10-case-studies/
+│   └── 11-interview-prep/
+├── astro.config.mjs                  # Starlight config and generated sidebar
+├── package.json                      # Astro build scripts
+└── README.md
 ```
 
 ## Curriculum Tree
@@ -226,18 +235,8 @@ npm run dev
 npm run build
 ```
 
-The production portal is deployed at:
+The production documentation portal is deployed at:
 
 ```text
 https://buildingaisystems.prajwolkharel.com.np
 ```
-
-## Implementation Track
-
-Run the first mirrored source example:
-
-```bash
-python3 examples/01-ai-fundamentals/01-what-is-ai/compute_benchmark.py --size 16 --iterations 2 --backend python
-```
-
-Each new implementation should mirror the documentation module and topic path so readers can move cleanly between design explanation and executable source.

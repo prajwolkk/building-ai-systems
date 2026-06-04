@@ -42,8 +42,8 @@ const acronymLabels = new Map([
 const matrixPages = [
   {
     label: 'Overview',
-    fileName: 'index.md',
-    slug: (moduleSlug, topicSlug) => `${moduleSlug}/${topicSlug}`,
+    fileName: '01-overview.md',
+    slug: (moduleSlug, topicSlug) => `${moduleSlug}/${topicSlug}/01-overview`,
   },
   {
     label: 'System Architecture',
@@ -94,12 +94,30 @@ function markdownBody(markdown) {
   return markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '').trim();
 }
 
+function frontmatterValue(markdown, key) {
+  const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) {
+    return undefined;
+  }
+
+  const line = match[1]
+    .split(/\r?\n/)
+    .find((frontmatterLine) => frontmatterLine.startsWith(`${key}:`));
+
+  return line?.slice(key.length + 1).trim();
+}
+
 function hasPublishableContent(fileUrl) {
   if (!existsSync(fileUrl)) {
     return false;
   }
 
-  const body = markdownBody(readFileSync(fileUrl, 'utf8'));
+  const markdown = readFileSync(fileUrl, 'utf8');
+  if (frontmatterValue(markdown, 'draft') === 'true') {
+    return false;
+  }
+
+  const body = markdownBody(markdown);
   const meaningfulLines = body
     .split(/\r?\n/)
     .map((line) => line.trim())
@@ -162,6 +180,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Building AI Systems',
+      favicon: '/site-icon.svg',
       disable404Route: true,
       social: [
         {

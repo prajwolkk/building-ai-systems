@@ -30,14 +30,14 @@ The first module establishes how models represent information, consume compute, 
 
 Every topic follows the same three-page structure:
 
-- Overview: the conceptual boundary, vocabulary, and engineering purpose.
-- System Architecture: components, data flow, constraints, and failure surfaces.
-- Technical Deep Dive: implementation details, performance mechanics, and production tradeoffs.
+- `01-overview.md`: the conceptual boundary, vocabulary, and engineering purpose.
+- `02-architecture.md`: components, data flow, constraints, and failure surfaces.
+- `03-deep-dive.md`: implementation details, performance mechanics, and production tradeoffs.
 
-## Implementation Track
+## Publishing Rule
 
-Python examples live outside the content tree so they remain source code, not embedded documentation fragments. Each implementation should be small enough to inspect, realistic enough to reuse, and documented enough to explain the system concept it represents.
+The full folder matrix exists in the repository, but placeholder-only topics stay hidden from the public sidebar. When a page moves beyond scaffold text, the sidebar reveals that page automatically on the next build.
 
-## Completion Target
+## Writing Rule
 
 The foundation is designed so future writing can happen without sidebar, routing, or build-configuration churn. New content should only need to fill the existing overview, architecture, and deep-dive pages for a topic.
