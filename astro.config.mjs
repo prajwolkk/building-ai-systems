@@ -7,10 +7,14 @@ export default defineConfig({
     integrations: [
         starlight({
             title: 'Building AI Systems',
-            social: {
-                // Fixed syntax: Starlight expects an object matching explicit link keys or specific configurations
-                github: 'https://github.com/prajwolkk/building-ai-systems',
-            },
+            // FIXED: Re-architected to comply with Starlight v0.33.0 array syntax requirements
+            social: [
+                {
+                    icon: 'github',
+                    label: 'GitHub',
+                    href: 'https://github.com/prajwolkk/building-ai-systems'
+                }
+            ],
             sidebar: [
                 {
                     label: 'Getting Started',
