@@ -7,7 +7,6 @@ export default defineConfig({
     integrations: [
         starlight({
             title: 'Building AI Systems',
-            // FIXED: Re-architected to comply with Starlight v0.33.0 array syntax requirements
             social: [
                 {
                     icon: 'github',
@@ -16,12 +15,8 @@ export default defineConfig({
                 }
             ],
             sidebar: [
-                {
-                    label: 'Getting Started',
-                    items: [
-                        { label: 'System Roadmap', link: '/00-roadmap' },
-                    ],
-                },
+                // FIXED: Flattened into a single, direct, unnested link object
+                { label: 'System Roadmap', link: '/00-roadmap' },
                 {
                     label: '01. AI Fundamentals',
                     items: [{ autogenerate: { directory: '01-ai-fundamentals' } }]
