@@ -1,4 +1,4 @@
-import { readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
@@ -39,6 +39,32 @@ const acronymLabels = new Map([
   ['langfuse', 'Langfuse'],
 ]);
 
+const matrixPages = [
+  {
+    label: 'Overview',
+    fileName: 'index.md',
+    slug: (moduleSlug, topicSlug) => `${moduleSlug}/${topicSlug}`,
+  },
+  {
+    label: 'System Architecture',
+    fileName: '02-architecture.md',
+    slug: (moduleSlug, topicSlug) => `${moduleSlug}/${topicSlug}/02-architecture`,
+  },
+  {
+    label: 'Technical Deep Dive',
+    fileName: '03-deep-dive.md',
+    slug: (moduleSlug, topicSlug) => `${moduleSlug}/${topicSlug}/03-deep-dive`,
+  },
+];
+
+const scaffoldOnlyLines = new Set([
+  'Content coming soon.',
+  '### System Topology',
+  'Placeholder for production-grade architectural specifications.',
+  '### Implementation Vector',
+  'Detailed engineering logs coming soon.',
+]);
+
 function directoryNames(parentUrl) {
   return readdirSync(parentUrl, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
@@ -64,21 +90,60 @@ function humanizeTopicSlug(slug) {
     .join(' ');
 }
 
+function markdownBody(markdown) {
+  return markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '').trim();
+}
+
+function hasPublishableContent(fileUrl) {
+  if (!existsSync(fileUrl)) {
+    return false;
+  }
+
+  const body = markdownBody(readFileSync(fileUrl, 'utf8'));
+  const meaningfulLines = body
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0 && !scaffoldOnlyLines.has(line));
+
+  return meaningfulLines.length > 0;
+}
+
 function topicSidebarItems(moduleSlug) {
   const moduleUrl = new URL(`${moduleSlug}/`, docsRoot);
 
-  return directoryNames(moduleUrl).map((topicSlug) => ({
-    label: humanizeTopicSlug(topicSlug),
-    collapsed: true,
-    items: [
-      { label: 'Overview', slug: `${moduleSlug}/${topicSlug}` },
-      { label: 'System Architecture', slug: `${moduleSlug}/${topicSlug}/02-architecture` },
-      { label: 'Technical Deep Dive', slug: `${moduleSlug}/${topicSlug}/03-deep-dive` },
-    ],
-  }));
+  return directoryNames(moduleUrl)
+    .map((topicSlug) => {
+      const items = matrixPages
+        .filter((page) =>
+          hasPublishableContent(new URL(`${moduleSlug}/${topicSlug}/${page.fileName}`, docsRoot))
+        )
+        .map((page) => ({
+          label: page.label,
+          slug: page.slug(moduleSlug, topicSlug),
+        }));
+
+      if (items.length === 0) {
+        return null;
+      }
+
+      return {
+        label: humanizeTopicSlug(topicSlug),
+        collapsed: true,
+        items,
+      };
+    })
+    .filter(Boolean);
 }
 
 function buildSidebar() {
+  const curriculumModules = Object.keys(moduleLabels)
+    .filter((moduleSlug) => moduleSlug !== '00-getting-started')
+    .map((moduleSlug) => ({
+      label: moduleLabels[moduleSlug],
+      items: topicSidebarItems(moduleSlug),
+    }))
+    .filter((module) => module.items.length > 0);
+
   return [
     {
       label: moduleLabels['00-getting-started'],
@@ -87,12 +152,7 @@ function buildSidebar() {
         { label: 'System Roadmap', slug: '00-getting-started/roadmap' },
       ],
     },
-    ...Object.keys(moduleLabels)
-      .filter((moduleSlug) => moduleSlug !== '00-getting-started')
-      .map((moduleSlug) => ({
-        label: moduleLabels[moduleSlug],
-        items: topicSidebarItems(moduleSlug),
-      })),
+    ...curriculumModules,
   ];
 }
 
