@@ -58,6 +58,10 @@ Benchmark the full path that the user experiences. A model-only benchmark can hi
 
 The right benchmark reports throughput, median latency, tail latency, memory use, and quality-sensitive configuration values such as precision, sequence length, and batch size.
 
+## Source Reference
+
+[View Production Source Code](../../../../../examples/01-ai-fundamentals/01-what-is-ai/compute_benchmark.py)
+
 ## Systems Takeaway
 
 AI capability is inseparable from compute architecture. Every production design should make the compute path explicit: what runs on CPU, what runs on an accelerator, what is cached, what is batched, and what is measured before release.
