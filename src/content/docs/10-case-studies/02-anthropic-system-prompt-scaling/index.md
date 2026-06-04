@@ -1,7 +1,6 @@
 ---
-title: Anthropic System Prompt Scaling
+title: "Overview"
 sidebar:
-  order: 2
+  order: 1
 ---
-
 Content coming soon.

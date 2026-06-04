@@ -1,7 +1,6 @@
 ---
-title: Model Parameters
+title: "Overview"
 sidebar:
-  order: 10
+  order: 1
 ---
-
 Content coming soon.

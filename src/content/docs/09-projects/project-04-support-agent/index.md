@@ -1,7 +1,6 @@
 ---
-title: "Project 04: Support Agent"
+title: "Overview"
 sidebar:
-  order: 4
+  order: 1
 ---
-
 Content coming soon.

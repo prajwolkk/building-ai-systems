@@ -1,7 +1,6 @@
 ---
-title: "Project 08: AI Search Engine"
+title: "Overview"
 sidebar:
-  order: 8
+  order: 1
 ---
-
 Content coming soon.

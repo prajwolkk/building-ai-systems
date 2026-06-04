@@ -1,7 +1,6 @@
 ---
-title: Pinecone
+title: "Overview"
 sidebar:
-  order: 8
+  order: 1
 ---
-
 Content coming soon.

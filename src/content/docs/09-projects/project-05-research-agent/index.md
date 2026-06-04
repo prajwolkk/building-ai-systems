@@ -1,7 +1,6 @@
 ---
-title: "Project 05: Research Agent"
+title: "Overview"
 sidebar:
-  order: 5
+  order: 1
 ---
-
 Content coming soon.

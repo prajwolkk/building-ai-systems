@@ -1,9 +1,15 @@
 ---
-title: Compute Mechanics
+title: "Technical Deep Dive"
 sidebar:
   order: 3
 ---
+### System Topology
+Placeholder for production-grade architectural specifications.
 
+### Implementation Vector
+Detailed engineering logs coming soon.
+
+## Migrated Legacy Notes: 03-compute-mechanics.md
 ## Hardware expectations
 Modern AI workloads are bound by matrix math throughput and memory bandwidth. GPUs and specialized accelerators dominate because they are optimized for parallel linear algebra.
 

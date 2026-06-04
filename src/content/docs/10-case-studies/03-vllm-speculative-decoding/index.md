@@ -1,7 +1,6 @@
 ---
-title: vLLM Speculative Decoding
+title: "Overview"
 sidebar:
-  order: 3
+  order: 1
 ---
-
 Content coming soon.

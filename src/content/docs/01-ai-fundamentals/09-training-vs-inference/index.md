@@ -1,7 +1,6 @@
 ---
-title: Training vs Inference
+title: "Overview"
 sidebar:
-  order: 9
+  order: 1
 ---
-
 Content coming soon.

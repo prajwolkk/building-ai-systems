@@ -1,7 +1,6 @@
 ---
-title: "Project 03: Document Chat"
+title: "Overview"
 sidebar:
-  order: 3
+  order: 1
 ---
-
 Content coming soon.

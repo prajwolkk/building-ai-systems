@@ -1,7 +1,6 @@
 ---
-title: OpenAI Chat Session State
+title: "Overview"
 sidebar:
   order: 1
 ---
-
 Content coming soon.

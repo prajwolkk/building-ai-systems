@@ -1,7 +1,6 @@
 ---
-title: "Project 06: AI Workflow"
+title: "Overview"
 sidebar:
-  order: 6
+  order: 1
 ---
-
 Content coming soon.

@@ -1,7 +1,6 @@
 ---
-title: "Project 02: RAG Chat"
+title: "Overview"
 sidebar:
-  order: 2
+  order: 1
 ---
-
 Content coming soon.

@@ -1,9 +1,15 @@
 ---
-title: Core Paradigms
+title: "System Architecture"
 sidebar:
   order: 2
 ---
+### System Topology
+Placeholder for production-grade architectural specifications.
 
+### Implementation Vector
+Detailed engineering logs coming soon.
+
+## Migrated Legacy Notes: 02-paradigms.md
 ## From rules to learning systems
 Early AI systems relied on expert rules and logic engines. These systems were predictable but brittle, because every new edge case required manual updates.
 

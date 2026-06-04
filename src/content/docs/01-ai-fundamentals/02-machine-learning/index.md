@@ -1,10 +1,8 @@
 ---
-title: Machine Learning
+title: "Overview"
 sidebar:
-  order: 2
-description: How models learn patterns from data and generalize to new inputs.
+  order: 1
 ---
-
 ## Why it matters
 Machine learning defines how models are trained, evaluated, and monitored. The choices you make here directly impact system reliability, cost, and the ability to improve over time.
 
