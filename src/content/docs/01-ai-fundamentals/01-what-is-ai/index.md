@@ -3,14 +3,31 @@ title: "Overview"
 sidebar:
   order: 1
 ---
-## What this section covers
-Artificial intelligence systems engineering is the practice of building reliable software that uses learned models to make decisions under real-world constraints. The goal is not just accuracy, but predictable behavior across latency budgets, cost limits, and evolving data.
 
-## Production expectations
-Modern AI workloads run as services with strict operational requirements. You should expect to design for observability, rollout safety, and retraining cadence from day one.
+## What Artificial Intelligence Means In Systems Work
 
-## System boundary
-An AI system includes the model, the data pipeline, and the control plane around it. Inputs must be validated, outputs must be monitored, and the system must degrade safely when the model is uncertain.
+Artificial intelligence is the practice of building software that can perform tasks where the decision logic is not fully hand-authored. Instead of expressing every rule directly, engineers shape data, objectives, representations, tools, and runtime constraints so the system can produce useful behavior under uncertainty.
 
-## How to use this module
-Start with the core definition of AI, then move into paradigms and compute mechanics. Each page adds constraints you will need to keep in mind as you ship real systems.
+In production, an AI system is not just a model. It is a coordinated service that receives inputs, prepares context, invokes learned or symbolic reasoning components, validates outputs, observes behavior, and degrades safely when confidence or infrastructure quality drops.
+
+## The Production Boundary
+
+An AI feature usually spans five boundaries:
+
+- Input boundary: user text, documents, images, events, or structured records.
+- Representation boundary: tokens, embeddings, feature vectors, symbolic facts, or tool schemas.
+- Decision boundary: model inference, search, planning, classification, ranking, or generated text.
+- Control boundary: policies, guards, retries, routing, evaluation, and human review.
+- Output boundary: responses, actions, recommendations, citations, or downstream writes.
+
+Reliable systems treat each boundary as an interface. The model may be probabilistic, but the surrounding software must still be testable, observable, and accountable.
+
+## Why AI Systems Fail Differently
+
+Traditional software often fails because a rule is missing, a dependency is down, or state is corrupted. AI systems can fail while every service remains technically healthy. A model can answer fluently but incorrectly, retrieve irrelevant evidence, over-trust stale context, leak sensitive data, or use a tool in a harmful way.
+
+This changes the engineering posture. You need conventional reliability practices plus evaluation sets, trace analysis, data-quality checks, safety policies, cost controls, and model-behavior monitoring.
+
+## Mental Model
+
+Think of AI as a set of representation and decision engines embedded inside regular software. The engineering job is to make those engines useful, bounded, measurable, and resilient.
